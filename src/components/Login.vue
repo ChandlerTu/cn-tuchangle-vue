@@ -6,7 +6,7 @@
     </p>
     <form @submit.prevent="login">
       <label><input v-model="email" placeholder="email"></label>
-      <label><input v-model="pass" placeholder="password" type="password"></label> (hint: password1)<br>
+      <label><input v-model="pass" placeholder="password" type="password"></label><br>
       <button type="submit">login</button>
       <p v-if="error" class="error">Bad login information</p>
     </form>
@@ -14,28 +14,28 @@
 </template>
 
 <script>
-import auth from '../auth'
+import auth from "../auth";
 
 export default {
-  data () {
+  data() {
     return {
-      email: 'joe@example.com',
-      pass: '',
+      email: "joe@example.com",
+      pass: "",
       error: false
-    }
+    };
   },
   methods: {
-    login () {
+    login() {
       auth.login(this.email, this.pass, loggedIn => {
         if (!loggedIn) {
-          this.error = true
+          this.error = true;
         } else {
-          this.$router.replace(this.$route.query.redirect || '/')
+          this.$router.replace(this.$route.query.redirect || "/");
         }
-      })
+      });
     }
   }
-}
+};
 </script>
 
 <style>
