@@ -1,21 +1,12 @@
 <template>
   <div id="app">
-    <h1>Auth Flow</h1>
-    <ul>
-      <li>
-        <router-link to="/">Home</router-link>
-      </li>
-      <li>
-        <router-link to="/dashboard">Dashboard</router-link>
-      </li>
-      <li>
-        <router-link to="/about">About</router-link>
-      </li>
-      <li>
-        <router-link v-if="loggedIn" to="/logout">Log out</router-link>
-        <router-link v-if="!loggedIn" to="/login">Log in</router-link>
-      </li>
-    </ul>
+    <el-menu :default-active="activeIndex" mode="horizontal" @select="handleSelect" router>
+      <el-menu-item index="/">Home</el-menu-item>
+      <el-menu-item index="/dashboard">Dashboard</el-menu-item>
+      <el-menu-item index="/about">About</el-menu-item>
+      <el-menu-item v-if="loggedIn" index="/logout">Log out</el-menu-item>
+      <el-menu-item v-if="!loggedIn" index="/login">Log in</el-menu-item>
+    </el-menu>
     <template v-if="$route.matched.length">
       <router-view></router-view>
     </template>
@@ -32,6 +23,7 @@ import auth from "../auth";
 export default {
   data() {
     return {
+      activeIndex: this.$route.path,
       loggedIn: auth.loggedIn()
     };
   },
@@ -39,6 +31,12 @@ export default {
     auth.onChange = loggedIn => {
       this.loggedIn = loggedIn;
     };
+  },
+  methods: {
+    handleSelect(key, keyPath) {
+      this.activeIndex = key;
+      console.log(key, keyPath);
+    }
   }
 };
 </script>
