@@ -3,39 +3,42 @@
     <h1>Auth Flow</h1>
     <ul>
       <li>
-        <router-link v-if="loggedIn" to="/logout">Log out</router-link>
-        <router-link v-if="!loggedIn" to="/login">Log in</router-link>
+        <router-link to="/">Home</router-link>
+      </li>
+      <li>
+        <router-link to="/dashboard">Dashboard</router-link>
       </li>
       <li>
         <router-link to="/about">About</router-link>
       </li>
       <li>
-        <router-link to="/dashboard">Dashboard</router-link>
-        (authenticated)
+        <router-link v-if="loggedIn" to="/logout">Log out</router-link>
+        <router-link v-if="!loggedIn" to="/login">Log in</router-link>
       </li>
     </ul>
     <template v-if="$route.matched.length">
       <router-view></router-view>
     </template>
     <template v-else>
+      <h1>Home</h1>
       <p>You are logged {{ loggedIn ? 'in' : 'out' }}</p>
     </template>
   </div>
 </template>
 
 <script>
-import auth from '../auth'
+import auth from "../auth";
 
 export default {
-  data () {
+  data() {
     return {
       loggedIn: auth.loggedIn()
-    }
+    };
   },
-  created () {
+  created() {
     auth.onChange = loggedIn => {
-      this.loggedIn = loggedIn
-    }
+      this.loggedIn = loggedIn;
+    };
   }
-}
+};
 </script>
