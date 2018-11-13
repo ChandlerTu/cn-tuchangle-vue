@@ -1,13 +1,17 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-Vue.use(VueRouter)
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 
 import auth from './auth'
 import App from './components/App.vue'
 import About from './components/About.vue'
 import Dashboard from './components/Dashboard.vue'
 import Login from './components/Login.vue'
+
+Vue.use(VueRouter)
+Vue.use(ElementUI);
 
 Vue.config.productionTip = false
 
