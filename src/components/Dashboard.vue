@@ -16,7 +16,7 @@
       </el-table-column>
       <el-table-column prop="gram" label="克">
       </el-table-column>
-      <el-table-column prop="date" label="日期">
+      <el-table-column prop="date" :formatter="tableColumnFormat" label="日期">
       </el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
@@ -45,15 +45,15 @@ export default {
     findFoodDiaries() {
       console.log("findFoodDiaries");
       axios
-        .get(
-          "/api/foodDiaries/search/findByDate?date=" +
-            this.formatDate(this.date)
-        )
+        .get("/api/foodDiaries/search/findByDate?date=" + this.date.toJSON())
         .then(
           response => (this.foodDiaries = response.data._embedded.foodDiaries)
         );
     },
-    formatDate(date) {
+    tableColumnFormat(row, column, cellValue, index) {
+      return this.dateFormat(new Date(cellValue));
+    },
+    dateFormat(date) {
       let year = date.getFullYear();
       let month = date.getMonth() + 1;
       if (month < 10) {
