@@ -33,7 +33,7 @@ export default {
       form: {
         food: "梨",
         gram: 100,
-        date: new Date()
+        date: new Date(new Date().toLocaleDateString())
       },
       formLabelWidth: "120px"
     };

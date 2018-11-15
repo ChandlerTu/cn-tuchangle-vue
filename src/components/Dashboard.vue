@@ -69,7 +69,7 @@ export default {
   components: { AddFood },
   data() {
     return {
-      date: new Date(),
+      date: new Date(new Date().toLocaleDateString()),
       foodDiaries: []
     };
   },
