@@ -51,7 +51,7 @@ export default {
         );
     },
     tableColumnFormat(row, column, cellValue, index) {
-      return this.dateFormat(new Date(cellValue));
+      return this.dateFormat(this.toDate(cellValue));
     },
     dateFormat(date) {
       let year = date.getFullYear();
@@ -64,6 +64,18 @@ export default {
         day = "0" + day;
       }
       return year + "-" + month + "-" + day;
+    },
+    toDate(s) {
+      let date = new Date(
+        s.substring(0, 4),
+        s.substring(5, 7) - 1,
+        s.substring(8, 10),
+        s.substring(11, 13),
+        s.substring(14, 16),
+        s.substring(17, 19),
+        s.substring(20, 23)
+      );
+      return new Date(date.getTime() - date.getTimezoneOffset() * 60 * 1000);
     }
   },
   components: { AddFood },
