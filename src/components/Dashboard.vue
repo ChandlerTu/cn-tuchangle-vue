@@ -38,19 +38,19 @@ export default {
     deleteRow(index, rows) {
       let foodDiary = this.foodDiaries[index];
       axios.delete(foodDiary._links.self.href).catch(function(error) {
-        console.log(error);
+        this.console.log(error);
       });
       rows.splice(index, 1);
     },
     findFoodDiaries() {
-      console.log("findFoodDiaries");
+      this.console.log("findFoodDiaries");
       axios
         .get("/api/foodDiaries/search/findByDate?date=" + this.date.toJSON())
         .then(
           response => (this.foodDiaries = response.data._embedded.foodDiaries)
         );
     },
-    tableColumnFormat(row, column, cellValue, index) {
+    tableColumnFormat(row, column, cellValue) {
       return this.dateFormat(this.toDate(cellValue));
     },
     dateFormat(date) {
@@ -87,7 +87,7 @@ export default {
     };
   },
   mounted() {
-    console.log("mounted");
+    this.console.log("mounted");
     this.findFoodDiaries();
   }
 };

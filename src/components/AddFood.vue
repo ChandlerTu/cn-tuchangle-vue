@@ -31,7 +31,7 @@ export default {
     return {
       dialogFormVisible: false,
       form: {
-        food: "梨",
+        food: "水",
         gram: 100,
         date: new Date(new Date().toLocaleDateString())
       },
@@ -45,11 +45,11 @@ export default {
       axios
         .post("/api/foodDiaries", this.form)
         .then(function(response) {
-          console.log(response);
+          this.console.log(response);
           self.$emit("enlarge-text");
         })
         .catch(function(error) {
-          console.log(error);
+          this.console.log(error);
         });
     }
   }
