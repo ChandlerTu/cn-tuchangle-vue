@@ -43,7 +43,7 @@ export default {
       rows.splice(index, 1);
     },
     findFoodDiaries() {
-      this.console.log("findFoodDiaries");
+      console.log("findFoodDiaries");
       axios
         .get("/api/foodDiaries/search/findByDate?date=" + this.date.toJSON())
         .then(
@@ -87,7 +87,7 @@ export default {
     };
   },
   mounted() {
-    this.console.log("mounted");
+    console.log("mounted");
     this.findFoodDiaries();
   }
 };

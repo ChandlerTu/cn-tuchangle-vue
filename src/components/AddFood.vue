@@ -45,11 +45,11 @@ export default {
       axios
         .post("/api/foodDiaries", this.form)
         .then(function(response) {
-          this.console.log(response);
+          console.log(response);
           self.$emit("enlarge-text");
         })
         .catch(function(error) {
-          this.console.log(error);
+          console.log(error);
         });
     }
   }
