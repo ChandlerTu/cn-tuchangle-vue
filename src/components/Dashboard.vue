@@ -75,7 +75,8 @@ export default {
         s.substring(17, 19),
         s.substring(20, 23)
       );
-      return new Date(date.getTime() - date.getTimezoneOffset() * 60 * 1000);
+      date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
+      return date;
     }
   },
   components: { AddFood },
