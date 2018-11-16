@@ -38,7 +38,7 @@ export default {
     deleteRow(index, rows) {
       let foodDiary = this.foodDiaries[index];
       axios.delete(foodDiary._links.self.href).catch(function(error) {
-        this.console.log(error);
+        console.log(error);
       });
       rows.splice(index, 1);
     },
