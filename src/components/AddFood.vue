@@ -2,7 +2,7 @@
   <div id="AddFood">
     <el-button @click="dialogFormVisible = true">增加</el-button>
 
-    <el-dialog title="增加" :visible.sync="dialogFormVisible">
+    <el-dialog title="增加" :visible.sync="dialogFormVisible" width="100%">
       <el-form :model="form">
         <el-form-item label="食物 " :label-width="formLabelWidth ">
           <el-input v-model="form.food"></el-input>
