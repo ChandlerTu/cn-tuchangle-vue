@@ -2,7 +2,7 @@
   <div id="DietaryGuidelines">
     <el-row>
       <el-col :span="12">
-        <el-date-picker :editable="false" :clearable="false" type="date" placeholder="选择日期" v-model="date" @change="findFoodDiaries">
+        <el-date-picker type="date" :editable="false" :clearable="false" v-model="date" @change="findFoodDiaries">
         </el-date-picker>
       </el-col>
 

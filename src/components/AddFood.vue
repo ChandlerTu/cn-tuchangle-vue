@@ -2,16 +2,16 @@
   <div id="AddFood">
     <el-button @click="dialogFormVisible = true">增加</el-button>
 
-    <el-dialog title="增加" :visible.sync="dialogFormVisible" width="100%">
-      <el-form :model="form">
-        <el-form-item label="食物 " :label-width="formLabelWidth ">
-          <el-input v-model="form.food"></el-input>
+    <el-dialog title="增加" width="80%" :center="true" :visible.sync="dialogFormVisible">
+      <el-form :model="form" style="text-align:center">
+        <el-form-item>
+          <el-input v-model="form.food" placeholder="食物" style="width: 220px"></el-input>
         </el-form-item>
-        <el-form-item label="克 " :label-width="formLabelWidth ">
-          <el-input v-model="form.gram"></el-input>
+        <el-form-item>
+          <el-input v-model="form.gram" placeholder="克" style="width: 220px"></el-input>
         </el-form-item>
-        <el-form-item label="日期 " :label-width="formLabelWidth ">
-          <el-date-picker v-model="form.date" type="date" placeholder="选择日期">
+        <el-form-item>
+          <el-date-picker type="date" :editable="false" :clearable="false" v-model="form.date">
           </el-date-picker>
         </el-form-item>
       </el-form>
